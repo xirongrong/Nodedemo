@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="dist/css/bootstrap.min.css">
+	<script src="javascripts/jquery.min.js"></script>
+	<script src="dist/js/bootstrap.js"></script>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			font-family: "微软雅黑";
+		}
+		body{
+			width: 100%;
+			height: 100%;
+		}
+		.text{
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			background: #428bca;
+			color: #fff;
+			font-size: 18px;
+			padding-left: 62px;
+			position: fixed;
+			margin: 0;
+			top: 0;
+			left: 0;
+		}
+		.sear{
+			width: 450px;
+			height: 30px;
+			position: fixed;
+			top: 5px;
+			right: 62px;
+		}
+		.sear input{
+			padding: 5px 0;
+			line-height: 20px;
+			width: 95%;
+			background: #fff;
+			outline: none;
+			border: none
+		}
+		.sear div{
+			width: 70%;
+			height: 30px;
+			float: left;
+			border-radius: 2px 0 0 2px;
+			padding-left: 5%;
+			background: #fff;
+		}
+		.sear span{
+			width: 50px;
+			height: 30px;
+			background: #fff;
+			float: left;
+			line-height: 30px;
+			text-align: center;
+			border-radius: 0 2px 2px 0;
+			border-left: 1px solid #ddd;
+			cursor: pointer;
+			background: #eee;
+		}
+		.sear span:hover{
+			background: #ddd;
+		}
+		.Bigbox{
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+			
+		}
+		.Head{
+			width: 100%;
+			height: 40px;
+			display: flex ;
+			background: #666;
+			color: #fff;
+			position: fixed;
+			top: 40px;
+			left: 0;
+		}
+		.Head span{
+			flex: 1;
+			line-height: 40px;
+			font-size: 16px;
+			text-align: center;
+		}
+		.Listbox{
+			width: 100%;
+			height: auto;
+			overflow: hidden;
+			margin-top: 80px;
+		}
+		.Listbox ul{
+			width: 100%;
+			height: 30px;
+			background: #eee;
+			display: flex;
+			margin: 0;
+			border-bottom: 1px solid #ccc;
+		}
+		.Listbox ul:hover{
+			background: #ddd;
+		}
+		.Listbox ul li{
+			flex: 1;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			list-style: none;
+		}
+		.Listbox ul li.Last{
+			display: flex;
+		}
+		.Listbox ul li.Last a{
+			flex: 1;
+			text-decoration: none
+		}
+		.Topb{
+			width: 100%;
+			height: 100%;
+			background: rgba(222,222,222,.5);
+			position: fixed;
+			top: 0%;
+			left:0;
+			opacity: 0;
+			z-index: -1
+		}
+		.Con{
+			width: 450px;
+			height: 540px;
+			border-radius: 10px;
+			border: 1px solid #ccc;
+			margin: 15px auto;
+			background: #fff;
+			overflow: hidden;
+			margin-top: -100%;
+			position: relative;
+		}
+		.Con1{
+			width: 450px;
+			height: 540px;
+			border-radius: 10px;
+			border: 1px solid #ccc;
+			margin: 15px auto;
+			background: #fff;
+			overflow: hidden;
+			margin-top: 19%;
+			position: relative;
+			display: none;
+		}
+		.Con p{
+			width: 100%;
+			height: 40px;
+			background: #428bca;
+			line-height: 40px;
+			text-align: center;
+			color: #fff;
+			font-size: 18px;
+		}
+		.Con1 p{
+			width: 100%;
+			height: 40px;
+			background: #428bca;
+			line-height: 40px;
+			text-align: center;
+			color: #fff;
+			font-size: 18px;
+		}
+		.Confi{
+			width: 100%;
+			overflow: hidden;
+			padding: 5px 10px;
+		}
+		.Confi div{
+			width: 100%;
+			height:40px;
+			display: flex;
+		}
+		.Confi div span.Span1{
+			text-align: right;
+			flex: 4;
+			font-size: 16px;
+			line-height: 40px;
+		}
+		.Confi div span.Span2{
+			flex: 6;
+			font-size: 16px;
+			line-height: 40px;
+			padding-left: 20px;
+		}
+		.Confi1{
+			width: 100%;
+			overflow: hidden;
+			padding: 5px 10px;
+		}
+		.Confi1 div{
+			width: 100%;
+			height:35px;
+			display: flex;
+			margin-bottom: 5px;
+		}
+		.Confi1 div span.span1{
+			text-align: right;
+			flex: 3;
+			font-size: 16px;
+			line-height: 35px;
+		}
+		.Confi1 div input{
+			flex: 7;
+			font-size: 12px;
+			padding: 5px 0;
+			line-height: 12px;
+			padding-left: 20px;
+			margin-right: 72px;
+		}
+		.Con2{
+			width: 450px;
+			height: 540px;
+			border-radius: 10px;
+			border: 1px solid #ccc;
+			margin: 15px auto;
+			background: #fff;
+			overflow: hidden;
+			margin-top:19%;
+			position: relative;
+			display: none;
+		}
+		.Con2 p{
+			width: 100%;
+			height: 40px;
+			background: #428bca;
+			line-height: 40px;
+			text-align: center;
+			color: #fff;
+			font-size: 18px;
+		}
+		.Confi2{
+			width: 100%;
+			overflow: hidden;
+			padding: 5px 10px;
+		}
+		.Confi2 div{
+			width: 100%;
+			height:35px;
+			display: flex;
+			margin-bottom: 5px;
+		}
+		.Confi2 div span.span1{
+			text-align: right;
+			flex: 3;
+			font-size: 16px;
+			line-height: 35px;
+		}
+		.Confi2 div input{
+			flex: 7;
+			font-size: 12px;
+			padding: 5px 0;
+			line-height: 12px;
+			padding-left: 20px;
+			margin-right: 72px;
+		}
+		.btn-block{
+			width: 80%;
+			margin: 0 auto;
+			margin-top: 70px;
+		}
+		#modify{
+			margin-top: 20px;
+		}
+		.glyphicon-plus{
+			width: 40px;
+			height: 30px;
+			position: fixed;
+			top: 5px;
+			right: 80px;
+			line-height: 30px;
+			cursor: pointer;
+			text-align: center;
+			font-size: 18px;
+			color: #fff;
+			transition: all .5s ease;
+		}
+		.glyphicon-off{
+			width: 40px;
+			height: 30px;
+			position: fixed;
+			top: 5px;
+			right: 35px;
+			line-height: 33px;
+			cursor: pointer;
+			text-align: center;
+			font-size: 18px;
+			color: #fff;
+			transition: all .5s ease;
+		}
+		.glyphicon-plus:hover{
+			transform: rotate(180deg);
+		}
+		.Page{
+			width: 40%;
+			height: 40px;
+			margin: 0 auto;
+			padding-top: 5px;
+		}
+			.Page input{
+				width: 50px;
+				line-height: 12px;
+				padding: 1px 0;
+
+			}
+			.Page span{
+				width: 50px;
+				height: 40px;
+				line-height: 40px;
+			}
+			.Page span.fd{
+				overflow: hidden;
+			}
+			.Page button{
+				width: 50px;
+				height: 20px;
+				cursor: pointer;
+				outline: none;
+				background:none;
+				border: 1px solid blue;
+				color: blue;
+				float: left;
+				margin: 10px 2px 0 2px;
+			}
+			.Page button.active{
+				border: 1px solid #666;
+				color: #666;
+				pointer-events: none;
+			}
+			#ss div.active{
+				background: red;
+				color: #fff;
+			}
+			.Resu{
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				color: #666;
+				font-size: 16px;
+				display: none;
+
+			}
+			.hide{
+				width: 100%;
+				min-height: 520px;
+				line-height: 520px;
+				display: none;
+			}
+			.Red{
+				font-size: 20px;
+				color: red;
+			}
+	</style>
+</head>
+<body>
+	<p class="text">信息列表</p>
+	<div class="sear">
+		<div><input type="text" id="Search" placeholder="通过姓名和电话进行搜索"></div>
+		<span onselectstart="return false" id="Sear" title="搜索">搜索</span>
+	</div>
+	<div class="glyphicon glyphicon-plus" title="新增信息" id="Add"></div>
+	<div class="glyphicon glyphicon-off" title="退出登陆" id="Out"></div>
+	<div class="Bigbox">
+		<div class="Head">
+			<span>姓名</span>
+			<span>性别</span>
+			<span>年龄</span>
+			<span>学历</span>
+			<span>专业</span>
+			<span>公司</span>
+			<span>邮箱</span>
+			<span>电话</span>
+			<span>操作</span>
+		</div>
+		<div class="hide">正在加载。。。。。。</div>
+		<div class="Listbox" id="Listbox"></div>
+		<div class="Page" onselectstart="return false">
+			<button id="Prive" class="active">上一页</button>
+			<span id="ss" class="fd"></span>
+			<button id="Next">下一页</button>
+			<span id="G">共条</span>
+			<span id="pages">0/0</span>
+			<a href="javascript:;" id="Go">转至</a><span>第<input type="number" id="Pnumber">页</span>
+		</div>
+		<div class="Resu"></div>
+	</div>
+	<div class="Topb">
+		<div class="Con">
+			<p>信息详情</p>
+			<div class="Confi"></div>
+			<button type="button" class="btn btn-primary btn-sm btn-block" id="Off" title="关闭">Close</button>
+
+		</div>
+		<div class="Con1">
+			<p>修改信息</p>
+			<div class="Confi1">
+				<div><span class="span1">姓名：</span><input type="text" id="uname"></div>
+				<div><span class="span1">性别：</span><input type="text" id="sex"></div>
+				<div><span class="span1">年龄：</span><input type="text" id="age"></div>
+				<div><span class="span1">学历：</span><input type="text" id="edu"></div>
+				<div><span class="span1">专业：</span><input type="text" id="major"></div>
+				<div><span class="span1">公司：</span><input type="text" id="company"></div>
+				<div><span class="span1">邮箱：</span><input type="text" id="email"></div>
+				<div><span class="span1">电话：</span><input type="text" id="tel"></div>
+			</div>
+			<button type="button" class="btn btn-primary btn-sm btn-block" id="modify" title="修改">Modify</button>
+			<button type="button" class="btn btn-primary btn-sm btn-block" id="Off1" title="取消">Cancel</button>
+		</div>
+
+
+		<div class="Con2">
+			<p>新增信息</p>
+			<div class="Confi2">
+				<div><span class="span1">姓名：</span><input type="text" id="uname1" placeholder="Uname"></div>
+				<div><span class="span1">性别：</span><input type="text" id="sex1" placeholder="Sex"></div>
+				<div><span class="span1">年龄：</span><input type="text" id="age1" placeholder="Age"></div>
+				<div><span class="span1">学历：</span><input type="text" id="edu1" placeholder="Education"></div>
+				<div><span class="span1">专业：</span><input type="text" id="major1" placeholder="Major"></div>
+				<div><span class="span1">公司：</span><input type="text" id="company1" placeholder="Company"></div>
+				<div><span class="span1">邮箱：</span><input type="text" id="email1" placeholder="Email"></div>
+				<div><span class="span1">电话：</span><input type="text" id="tel1" placeholder="Telephone"></div>
+			</div>
+			<button type="button" class="btn btn-primary btn-sm btn-block" id="addto" title="添加">Add</button>
+			<button type="button" class="btn btn-primary btn-sm btn-block" id="cancel" title="取消">Cancel</button>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			var username = sessionStorage.getItem('username')
+			if(!username||username==""){
+				alert("请登陆账号！")
+				window.location.href="login.html"
+			}else{
+				//详情
+				$('.Listbox').delegate('.Xiang', 'click', function() {
+					$('.Topb').css({
+						"opacity":"1",
+						"zIndex":1
+					})
+					$('.Con').animate({
+						"marginTop":"15px"
+					},1000)
+					var id = $(this).attr('name')
+					$.ajax({
+						url:"http://localhost:1000/infm/confim?id="+id,
+						type:"get",
+						success:function(e){
+							$('.Confi').empty()
+							if(e){
+								for(var i=0;i<e.length;i++){
+									var html= ''
+									html+='<div><span class="Span1">姓名：</span><span class="Span2">'+e[i].uname+'</span></div><div><span class="Span1">性别：</span><span class="Span2">'+e[i].sex+'</span></div><div><span class="Span1">年龄：</span><span class="Span2">'+e[i].age+'</span></div><div><span class="Span1">学历：</span><span class="Span2">'+e[i].edu+'</span></div><div><span class="Span1">专业：</span><span class="Span2">'+e[i].major+'</span></div><div><span class="Span1">公司：</span><span class="Span2">'+e[i].company+'</span></div><div><span class="Span1">邮箱：</span><span class="Span2">'+e[i].email+'</span></div><div><span class="Span1">电话：</span><span class="Span2">'+e[i].tel+'</span></div>'
+									$('.Confi').append(html)
+								}
+							}
+						}
+					})
+				});
+				$('#Off').click(function(){
+					$('.Topb').animate({
+						"opacity":"0",
+						"zIndex":'-1'
+					},1000)
+					$('.Con').animate({
+						"marginTop":"-100%"
+					},1000)
+				})
+				//修改
+				$('.Listbox').delegate('.Non', 'click', function(){
+					$('.Topb').css({
+						"opacity":"1",
+						"zIndex":1
+					})
+					$('.Con1').css({
+						'display':'block'
+					})
+					$('.Con1').animate({
+						"marginTop":"63%"
+					},500)
+					var id=$(this).attr('name')
+					$.ajax({
+						url:"http://localhost:1000/infm/confim?id="+id,
+						type:"get",
+						success:function(e){
+							if(e){
+								for(var i=0;i<e.length;i++){
+									$('#uname').val(e[i].uname)
+									$('#sex').val(e[i].sex)
+									$('#age').val(e[i].age)
+									$('#edu').val(e[i].edu)
+									$('#major').val(e[i].major)
+									$('#company').val(e[i].company)
+									$('#email').val(e[i].email)
+									$('#tel').val(e[i].tel)
+								}
+							}
+						}
+					})
+
+					$('#modify').click(function(){
+						if($('#uname').val()==''){
+							alert("请输入姓名")
+						}else if($('#sex').val()==""){
+							alert('请输入性别')
+						}else if($('#age').val()==""){
+							alert('请输入年龄')
+						}else if($('#edu').val()==""){
+							alert('请输入学历')
+						}else if($('#major').val()==""){
+							alert('请输入专业')
+						}else if($('#company').val()==""){
+							alert('请输入公司')
+						}else if($('#email').val()==""){
+							alert('请输入邮箱')
+						}else if($('#tel').val()==""){
+							alert('请输入电话')
+						}else{
+							$.ajax({
+								url:"http://localhost:1000/infm/modify",
+								type:'post',
+								data:{
+									'uname':$('#uname').val(),
+									'sex':$('#sex').val(),
+									'age':$('#age').val(),
+									'edu':$('#edu').val(),
+									'major':$('#major').val(),
+									'company':$('#company').val(),
+									'email':$('#email').val(),
+									'tel':$('#tel').val(),
+									'uid':id
+								},
+								success:function(e){
+									if(e.flag==1){
+										alert('success')
+										$('.Topb').animate({
+											"opacity":"0",
+											"zIndex":'-1'
+										},1000)
+										$('.Con1').animate({
+											"marginTop":"19%"
+										},500,function(){
+											$('.Con1').css({
+												"display":"none"
+											})
+											window.location.reload()
+										})
+									}else if(e.flag==2){
+										alert('error')
+									}else{
+										alert('error')
+									}
+								}
+							})
+						}
+
+					})
+				})
+
+				
+				$('#Off1').click(function(){
+					$('.Topb').animate({
+						"opacity":"0",
+						"zIndex":'-1'
+					},1000)
+					
+					$('.Con1').animate({
+						"marginTop":"19%"
+					},500,function(){
+						$('.Con1').css({
+							"display":"none"
+						})
+					})
+				})
+			//搜索
+			$('#Sear').click(function(){
+				if($('#Search').val()!=''){
+					$('.Page').hide()
+					search()
+				}
+			})
+			//回车搜索，兼容火狐IE
+			document.onkeydown=function(event){
+				e = event ? event : (window.event ? window.event : null);
+				if(e.keyCode==13){
+					if (event.keyCode == 13){
+						if($('#Search').val()!=''){
+							$('.Page').hide()
+							search()
+						}
+					}
+				}
+			}
+			//封装搜索函数
+			function search(){
+				var Int = $.trim($("#Search").val());//首尾去空格
+				$.ajax({
+					url:"http://localhost:1000/infm/search",
+					type:'get',
+					data:{
+						cont:Int
+					},
+					success:function(e){
+						if(e&&e.length!=0){
+							$('.Listbox').empty()
+							for(var i=0;i<e.length;i++){
+								var html = ''
+								html+='<ul><li>'+e[i].uname+'</li><li>'+e[i].sex+'</li><li>'+e[i].age+'</li><li>'+e[i].edu+'</li><li>'+e[i].major+'</li><li>'+e[i].company+'</li><li>'+e[i].email+'</li><li>'+e[i].tel+'</li><li class="Last" onselectstart="return false"><a href="javascript:;" title="详情" name="'+e[i].uid+'" class="Xiang">详情</a><a href="javascript:;" class="Non" title="修改" name="'+e[i].uid+'">修改</a><a href="javascript:;" class="Non1" title="删除" name="'+e[i].uid+'">删除</a></li></ul>'
+								$('.Listbox').append(html)
+							}
+							$('.Resu').html('共为您搜索到'+'<span class="Red">'+e.length+'</span>'+'条数据，已加载全部！')
+							$('.Resu').show()
+						}else{
+							$('.Listbox').empty()
+							$('.Resu').html('抱歉没有搜索到相关数据，请重新搜索！')
+							$('.Resu').show()
+						}
+						
+					}
+				})
+			}
+			//添加
+			$('#Add').click(function(){
+				$('.Topb').css({
+					"opacity":"1",
+					"zIndex":1
+				})
+				$('.Con2').css({
+					'display':'block'
+				})
+				$('.Con2').animate({
+					"marginTop":"63%"
+				},500)
+			})
+			$('#cancel').click(function(){
+				$('.Topb').animate({
+					"opacity":"0",
+					"zIndex":'-1'
+				},1000)
+				
+				$('.Con2').animate({
+					"marginTop":"19%"
+				},500,function(){
+					$('.Con2').css({
+						"display":"none"
+					})
+				})
+			})
+
+			$('#addto').click(function(){
+				if($('#uname1').val()==''){
+					alert("请输入姓名")
+				}else if($('#sex1').val()==''){
+					alert("请输入性别")
+				}else if($('#age1').val()==''){
+					alert("请输入年龄")
+				}else if($('#edu1').val()==''){
+					alert("请输入学历")
+				}else if($('#major1').val()==''){
+					alert("请输入专业")
+				}else if($('#company1').val()==''){
+					alert("请输入公司")
+				}else if($('#email1').val()==''){
+					alert("请输入邮箱")
+				}else if($('#tel1').val()==''){
+					alert("请输入电话")
+				}else{
+					$.ajax({
+						url:"http://localhost:1000/infm/add",
+						type:"post",
+						data:{
+							uname:$('#uname1').val(),
+							sex:$('#sex1').val(),
+							age:$('#age1').val(),
+							edu:$('#edu1').val(),
+							major:$('#major1').val(),
+							company:$('#company1').val(),
+							email:$('#email1').val(),
+							tel:$('#tel1').val()
+						},
+						success:function(e){
+							if(e.flag==1){
+								$('.Topb').animate({
+									"opacity":"0",
+									"zIndex":'-1'
+								},1000)
+								
+								$('.Con2').animate({
+									"marginTop":"19%"
+								},500,function(){
+									$('.Con2').css({
+										"display":"none"
+									})
+									window.location.reload()
+								})
+							}else if(e.flag==2){
+								alert('用户信息已存在')
+							}else if(e.flag==3){
+								alert("添加失败")
+							}else{
+								alert("添加失败")
+							}
+						}
+					})
+				}
+			})
+			//删除
+			$('.Listbox').delegate('.Non1', 'click', function(){
+				var id=$(this).attr('name')
+				var _this = this.parentNode.parentNode
+				var msg = "您确定要删除这条信息吗？"; 
+				if (confirm(msg)==true){ 
+					$.ajax({
+						url:"http://localhost:1000/infm/del",
+						type:"get",
+						data:{
+							id:id
+						},
+						success:function(e){
+							if(e.flag==1){
+								Listbox.removeChild(_this)
+							}else if(e.flag==2){
+								alert('error')
+							}else{
+								alert('error')
+							}
+						}
+					})
+				  	return true; 
+				}else{ 
+				  	return false; 
+				} 
+			})
+			//退出登陆
+			$('#Out').click(function(){
+				var msg = "您确定要退出当前登陆账号吗？"; 
+				if (confirm(msg)==true){ 
+					sessionStorage.clear()
+					window.location.href="Login.html"
+				  	return true; 
+				}else{ 
+				  	return false; 
+				} 
+			})
+			//分页
+			var n = 1;
+			var num = 0;
+			var tiao = 0
+			//默认执行
+			page(1)
+			//上一页
+			$('#Prive').click(function(){
+				n--;
+				if(n<1){
+					n=1
+				}else if(n==1){
+					$('#Prive').attr("class",'active')
+				}else if(n<num){
+					$('#Next').attr("class",'')
+				}
+				$('#pages').html(n+'/'+num)
+				$('.ds').eq(n-1).addClass('active').siblings().removeClass('active')
+				page(n)
+			})
+			//下一页
+			$('#Next').click(function(){
+				n++;
+				if(n>=num){
+					n=num
+					$('#Next').attr("class",'active')
+				}
+				if(n!=1){
+					$('#Prive').attr("class",'')
+				}
+				$('#pages').html(n+'/'+num)
+				$('.ds').eq(n-1).addClass('active').siblings().removeClass('active')
+				page(n)
+
+			})
+			//跳转到某一页
+			$('#Go').click(function(){
+				n = $("#Pnumber").val()
+				if(n<=1){
+					$('#Prive').attr("class",'active')
+					$('#Next').attr("class",'')
+				}else if(n>=num){
+					$('#Next').attr("class",'active')
+					$('#Prive').attr("class",'')
+				}else{
+					$('#Prive').attr("class",'')
+					$('#Next').attr("class",'')
+				}
+				if($("#Pnumber").val()>=1&&$("#Pnumber").val()<=num){
+					page(n)
+				}else{
+					alert("输入错误")
+				}
+				$('.ds').eq(n-1).addClass('active').siblings().removeClass('active')
+			})
+			//创建分页
+			$.ajax({
+				url:"http://localhost:1000/infm/page",
+				type:'get',
+				data:{
+					page:n-1
+				},
+				success:function(e){
+					var ny = e.pageNum
+					if(ny>1){
+						$('.Page').show()
+					}else{
+						$('.Page').hide()
+					}
+					for(var i = 0;i<ny;i++){
+						var aDiv = document.createElement('div')
+						aDiv.innerHTML = i+1
+						aDiv.setAttribute('class','ds')
+						aDiv.style.cssText = 'width:30px;height:20px;float:left;line-height:20px;border:1px solid #ddd;text-align:center;cursor:pointer;margin:10px 2px 0 2px;'
+						$('#ss').append(aDiv)
+					}
+					$('.ds').eq(0).addClass('active')
+				}
+			})
+			//分页按钮
+			$('#ss').delegate('div','click',function(){
+				var index = $(this).index()+1
+				n = index
+				if(n>=$('.ds').length){
+					$('#Next').attr("class",'active')
+					$('#Prive').attr("class",'')
+				}else if(n<=1){
+					$('#Prive').attr("class",'active')
+					$('#Next').attr("class",'')
+				}else{
+					$('#Prive').attr("class",'')
+					$('#Next').attr("class",'')
+				}
+				$(this).addClass('active').siblings().removeClass('active')
+				page(n)
+			})
+			//封装分页ajax
+			function page(n){
+				$.ajax({
+					url:"http://localhost:1000/infm/page",
+					type:"get",
+					data:{
+						page:n-1
+					},
+					beforeSend:function(){
+						$('.hide').show()
+					},
+					success:function(e){
+						$('.hide').hide()
+						$('.Listbox').empty()
+						if(e.results){
+							for(var i=0;i<e.results.length;i++){
+								var html = ''
+								html+='<ul title="'+e.results[i].uname+'"><li>'+e.results[i].uname+'</li><li>'+e.results[i].sex+'</li><li>'+e.results[i].age+'</li><li>'+e.results[i].edu+'</li><li>'+e.results[i].major+'</li><li>'+e.results[i].company+'</li><li>'+e.results[i].email+'</li><li>'+e.results[i].tel+'</li><li class="Last" onselectstart="return false"><a href="javascript:;" title="详情" name="'+e.results[i].uid+'" class="Xiang">详情</a><a href="javascript:;" class="Non" title="修改" name="'+e.results[i].uid+'">修改</a><a href="javascript:;" class="Non1" title="删除" name="'+e.results[i].uid+'">删除</a></li></ul>'
+								$('.Listbox').append(html)
+							}
+						}
+						num = e.pageNum
+						tiao = e.total
+						$('#G').html('共'+tiao+'条')
+						$('#pages').html(n+'/'+num)
+						//判断登陆人账号
+						if(username){
+							if(username=='admin'||username=='lining'){
+								$('.Non').css({
+									"display":'block'
+								})
+								$('.Non1').css({
+									"display":'block'
+								})
+							}else{
+								$('.Non').css({
+									"display":'none'
+								})
+								$('.Non1').css({
+									"display":'none'
+								})
+							}
+						}
+					}
+				})
+			}
+		}
+	})
+	</script>
+</body>
+</html>
